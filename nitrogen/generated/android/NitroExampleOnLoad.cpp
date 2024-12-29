@@ -11,22 +11,30 @@
 #include <fbjni/fbjni.h>
 #include <NitroModules/HybridObjectRegistry.hpp>
 
-#include "JHybridMathSpec.hpp"
+#include "NitroExample.hpp"
 
-namespace margelo::nitro::example {
+namespace margelo::nitro::nitroexample {
 
 int initialize(JavaVM* vm) {
   using namespace margelo::nitro;
-  using namespace margelo::nitro::example;
+  using namespace margelo::nitro::nitroexample;
   using namespace facebook;
 
   return facebook::jni::initialize(vm, [] {
     // Register native JNI methods
-    margelo::nitro::example::JHybridMathSpec::registerNatives();
+    
 
     // Register Nitro Hybrid Objects
-    
+    HybridObjectRegistry::registerHybridObjectConstructor(
+      "NitroExample",
+      []() -> std::shared_ptr<HybridObject> {
+        static_assert(std::is_default_constructible_v<NitroExample>,
+                      "The HybridObject \"NitroExample\" is not default-constructible! "
+                      "Create a public constructor that takes zero arguments to be able to autolink this HybridObject.");
+        return std::make_shared<NitroExample>();
+      }
+    );
   });
 }
 
-} // namespace margelo::nitro::example
+} // namespace margelo::nitro::nitroexample

@@ -8,7 +8,7 @@
 #include <jni.h>
 #include <NitroModules/NitroDefines.hpp>
 
-namespace margelo::nitro::example {
+namespace margelo::nitro::nitroexample {
 
   /**
    * Initializes the native (C++) part of NitroExample, and autolinks all Hybrid Objects.
@@ -16,10 +16,10 @@ namespace margelo::nitro::example {
    * Example:
    * ```cpp (cpp-adapter.cpp)
    * JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void*) {
-   *   return margelo::nitro::example::initialize(vm);
+   *   return margelo::nitro::nitroexample::initialize(vm);
    * }
    * ```
    */
   int initialize(JavaVM* vm);
 
-} // namespace margelo::nitro::example
+} // namespace margelo::nitro::nitroexample

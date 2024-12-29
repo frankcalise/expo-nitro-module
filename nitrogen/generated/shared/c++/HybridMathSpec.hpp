@@ -17,7 +17,7 @@
 
 
 
-namespace margelo::nitro::example {
+namespace margelo::nitro::nitroexample {
 
   using namespace margelo::nitro;
 
@@ -59,4 +59,4 @@ namespace margelo::nitro::example {
       static constexpr auto TAG = "Math";
   };
 
-} // namespace margelo::nitro::example
+} // namespace margelo::nitro::nitroexample
